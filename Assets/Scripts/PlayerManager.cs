@@ -15,11 +15,15 @@ public class PlayerManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        var rigidbody=GetComponent<Rigidbody>();
+        transform.position = new Vector3(
+                    transform.position.x + joystick.Horizontal*0.15f,
+                    transform.position.y,
+                    transform.position.z+joystick.Vertical*0.15f);
+        /*var rigidbody=GetComponent<Rigidbody>();
         rigidbody.velocity=new Vector3( joystick.Horizontal*10f,
                                         rigidbody.velocity.y,
-                                        joystick.Vertical*10f);
+                                        joystick.Vertical*10f);*/
     }
 }
