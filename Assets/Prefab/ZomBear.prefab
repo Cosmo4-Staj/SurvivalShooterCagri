@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1398236430635809660}
   m_Layer: 0
   m_Name: ZomBear
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,6 +67,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d18ce5ac984a72f44adc2ee7d3d70f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingHealth: 100
+  currentHealth: 0
 --- !u!195 &-2263591037167590046
 NavMeshAgent:
   m_ObjectHideFlags: 0
