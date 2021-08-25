@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    Animator anim; 
+    public int startingHealth = 100;         
+    public int currentHealth; 
+
+
+    Animator anim;
+    AudioSource playerAudio;  
+
+
     protected Joystick joystick;
     protected FixedButton fixedButton;
     // Start is called before the first frame update
     void Start()
     {
+        playerAudio = GetComponent <AudioSource> ();
+        currentHealth = startingHealth;
         anim = GetComponent <Animator> ();
         joystick=FindObjectOfType<Joystick>();
         fixedButton= FindObjectOfType<FixedButton>();
@@ -32,10 +41,6 @@ public class PlayerManager : MonoBehaviour
             anim.SetBool ("IsWalking", true);
         }
 
-
-
-
-        
         Vector3 frameMovement = new Vector3(joystick.Horizontal, 0f, joystick.Vertical);
         if(frameMovement==Vector3.zero){
             return;
@@ -43,10 +48,16 @@ public class PlayerManager : MonoBehaviour
         else{
             transform.rotation = Quaternion.LookRotation(frameMovement);
         }
-        
         /*var rigidbody=GetComponent<Rigidbody>();
         rigidbody.velocity=new Vector3( joystick.Horizontal*10f,
                                         rigidbody.velocity.y,
                                         joystick.Vertical*10f);*/
     }
+
+    public void TakeDamage (int amount)
+        {
+            playerAudio.Play ();
+            currentHealth -= amount;
+            Debug.Log(""+currentHealth);
+        }
 }
