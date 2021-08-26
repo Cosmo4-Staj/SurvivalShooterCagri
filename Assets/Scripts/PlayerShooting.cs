@@ -34,6 +34,10 @@ public class PlayerShooting : MonoBehaviour
 
     public void Shoot()
     {
+        if (!GameManager.isGameStarted || GameManager.isGameEnded) // Oyun baslamadiysa veya bittiyse
+        {
+            return;
+        }
         gunAudio.Play ();
         gunParticles.Stop ();
         gunParticles.Play ();

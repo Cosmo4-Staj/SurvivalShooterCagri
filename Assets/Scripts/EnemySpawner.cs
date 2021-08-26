@@ -22,6 +22,10 @@ public class EnemySpawner : MonoBehaviour
 
     void Spawn ()
         {
+            if (!GameManager.isGameStarted || GameManager.isGameEnded) // Oyun baslamadiysa veya bittiyse
+        {
+            return;
+        }
             int spawnPointIndex = Random.Range (0, spawnPoints.Length);
             Instantiate (enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
         }
